@@ -16,6 +16,18 @@ const routes: Routes = [
   {
     path: 'register-trainer',
     component: RegisterTrainerComponent
+  },
+  {
+    path: 'user',
+    loadChildren: ()=> import('./user/user.module').then(m => m.UserModule)
+  },
+  {
+    path: 'admin',
+    loadChildren: ()=> import('./admin/admin.module').then(m => m.AdminModule)
+  },
+  {
+    path: 'trainer',
+    loadChildren: ()=> import('./trainer/trainer.module').then(m => m.TrainerModule)
   }
 ];
 

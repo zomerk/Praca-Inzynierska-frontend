@@ -3,11 +3,18 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {HttpClient, HttpClientModule, provideHttpClient} from '@angular/common/http';
+import {
+  HTTP_INTERCEPTORS,
+  HttpClient,
+  HttpClientModule,
+  provideHttpClient,
+  withInterceptors
+} from '@angular/common/http';
 import { LoginComponent } from './pages/login/login.component';
 import {FormsModule} from '@angular/forms';
 import { RegisterUserComponent } from './pages/register-user/register-user.component';
 import { RegisterTrainerComponent } from './pages/register-trainer/register-trainer.component';
+import {httpTokenInterceptor} from './interceptor/http-token.interceptor';
 
 @NgModule({
   declarations: [
@@ -21,7 +28,7 @@ import { RegisterTrainerComponent } from './pages/register-trainer/register-trai
     AppRoutingModule,
     FormsModule,
   ],
-  providers: [provideHttpClient()],
+  providers: [provideHttpClient(withInterceptors([httpTokenInterceptor])),],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

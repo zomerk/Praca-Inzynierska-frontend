@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {AuthContorllerService} from '../../services/services/auth-contorller.service';
 import {HttpErrorResponse} from '@angular/common/http';
 import {TokenService} from '../../services/token/token.service';
+import { jwtDecode } from "jwt-decode";
 
 @Component({
   selector: 'app-login',
@@ -29,7 +30,19 @@ export class LoginComponent {
     ).subscribe({
       next: result => {
         this.tokenService.token = result.token as string;
-        this.router.navigate(['home']);
+        const decodedToken: any = jwtDecode(this.tokenService.token);
+        console.log(decodedToken.roles[0].authority);
+        switch (decodedToken.roles[0].authority) {
+          case 'ROLE_USER':
+            this.router.navigate(['user']);
+            break;
+          case 'ROLE_ADMIN':
+            this.router.navigate(['admin']);
+            break;
+          case 'ROLE_TRAINER':
+            this.router.navigate(['trainer']);
+            break;
+        }
       },
       error: err => {
         if(err.status === 400) {
