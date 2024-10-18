@@ -3,7 +3,7 @@ import {LoginDto} from '../../services/models/login-dto';
 import {Router} from '@angular/router';
 import {AuthContorllerService} from '../../services/services/auth-contorller.service';
 import {HttpErrorResponse} from '@angular/common/http';
-import {TokenService} from '../../services/token/token.service';
+import {TokenService} from '../../token/token.service';
 import { jwtDecode } from "jwt-decode";
 
 @Component({
@@ -30,7 +30,7 @@ export class LoginComponent {
     ).subscribe({
       next: result => {
         this.tokenService.token = result.token as string;
-        console.log(this.tokenService);
+        console.log(this.tokenService.token);
         const decodedToken: any = jwtDecode(this.tokenService.token);
         console.log(decodedToken.roles[0].authority);
         switch (decodedToken.roles[0].authority) {
@@ -48,9 +48,11 @@ export class LoginComponent {
       error: err => {
         if(err.status === 400) {
           this.errorMsg = (Object.values(err.error));
+          console.log(err.error);
         }
         if(err.status === 401) {
-          this.errorMsg.push(err.error.description);
+          this.errorMsg.push(err.error.detail);
+          console.log(err.error);
         }
         if(err.status === 403) {
           this.errorMsg.push("The account is looked our waiting for approval.");
