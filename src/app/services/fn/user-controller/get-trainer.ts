@@ -8,17 +8,13 @@ import { filter, map } from 'rxjs/operators';
 import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
-import { TrainerDto } from '../../models/trainer-dto';
 
-export interface RegisterTrainer$Params {
-      body: TrainerDto
+export interface GetTrainer$Params {
 }
 
-export function registerTrainer(http: HttpClient, rootUrl: string, params: RegisterTrainer$Params, context?: HttpContext): Observable<StrictHttpResponse<{
-}>> {
-  const rb = new RequestBuilder(rootUrl, registerTrainer.PATH, 'post');
+export function getTrainer(http: HttpClient, rootUrl: string, params?: GetTrainer$Params, context?: HttpContext): Observable<StrictHttpResponse<boolean>> {
+  const rb = new RequestBuilder(rootUrl, getTrainer.PATH, 'get');
   if (params) {
-    rb.body(params.body, 'application/json');
   }
 
   return http.request(
@@ -26,10 +22,9 @@ export function registerTrainer(http: HttpClient, rootUrl: string, params: Regis
   ).pipe(
     filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
     map((r: HttpResponse<any>) => {
-      return r as StrictHttpResponse<{
-      }>;
+      return (r as HttpResponse<any>).clone({ body: String((r as HttpResponse<any>).body) === 'true' }) as StrictHttpResponse<boolean>;
     })
   );
 }
 
-registerTrainer.PATH = '/register/trainer';
+getTrainer.PATH = '/user/trainer';

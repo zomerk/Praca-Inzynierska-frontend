@@ -30,6 +30,7 @@ export class LoginComponent {
     ).subscribe({
       next: result => {
         this.tokenService.token = result.token as string;
+        console.log(this.tokenService);
         const decodedToken: any = jwtDecode(this.tokenService.token);
         console.log(decodedToken.roles[0].authority);
         switch (decodedToken.roles[0].authority) {

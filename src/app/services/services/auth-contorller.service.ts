@@ -7,7 +7,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-
 import { BaseService } from '../base-service';
 import { ApiConfiguration } from '../api-configuration';
 import { StrictHttpResponse } from '../strict-http-response';
@@ -139,6 +138,5 @@ export class AuthContorllerService extends BaseService {
       map((r: StrictHttpResponse<LoginResponseDto>): LoginResponseDto => r.body)
     );
   }
-
 
 }

@@ -19,6 +19,8 @@ import { feedbackAfterTraining } from '../fn/user-controller/feedback-after-trai
 import { FeedbackAfterTraining$Params } from '../fn/user-controller/feedback-after-training';
 import { getRating } from '../fn/user-controller/get-rating';
 import { GetRating$Params } from '../fn/user-controller/get-rating';
+import { getTrainer } from '../fn/user-controller/get-trainer';
+import { GetTrainer$Params } from '../fn/user-controller/get-trainer';
 import { getTraining } from '../fn/user-controller/get-training';
 import { GetTraining$Params } from '../fn/user-controller/get-training';
 import { postComplaint } from '../fn/user-controller/post-complaint';
@@ -232,6 +234,31 @@ export class UserControllerService extends BaseService {
       map((r: StrictHttpResponse<{
 }>): {
 } => r.body)
+    );
+  }
+
+  /** Path part for operation `getTrainer()` */
+  static readonly GetTrainerPath = '/user/trainer';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `getTrainer()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getTrainer$Response(params?: GetTrainer$Params, context?: HttpContext): Observable<StrictHttpResponse<boolean>> {
+    return getTrainer(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `getTrainer$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getTrainer(params?: GetTrainer$Params, context?: HttpContext): Observable<boolean> {
+    return this.getTrainer$Response(params, context).pipe(
+      map((r: StrictHttpResponse<boolean>): boolean => r.body)
     );
   }
 
