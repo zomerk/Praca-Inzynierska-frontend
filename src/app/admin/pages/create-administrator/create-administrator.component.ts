@@ -22,7 +22,7 @@ export class CreateAdministratorComponent {
   ) {}
 
   createAdmin() {
-    this.adminService.registerAdmin(this.admin).subscribe({
+    this.adminService.registerAdmin({body:this.admin}).subscribe({
       next: (response) => {
         console.log('Admin created successfully', response);
         this.router.navigate(['/home']); // Redirect after successful creation

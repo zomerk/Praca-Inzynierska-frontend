@@ -1,0 +1,32 @@
+<div class="container my-4">
+  <h2>Available Trainers</h2>
+
+  <!-- List of Trainers as Tiles -->
+  <div class="row">
+    <div class="col-md-4" *ngFor="let trainer of trainers">
+      <div class="card mb-4 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">{{ trainer.firstName }} {{ trainer.lastName }}</h5>
+          <p class="card-text"><strong>Specialization:</strong> {{ trainer.specialization }}</p>
+          <p class="card-text"><strong>Experience Level:</strong> {{ trainer.experienceLevel }}</p>
+          <button class="btn btn-primary" (click)="signUpToTrainer(trainer.trainerId)">Sign Up</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pagination Controls -->
+  <nav>
+    <ul class="pagination justify-content-center">
+      <li class="page-item" [class.disabled]="page === 0">
+        <a class="page-link" (click)="changePage(page - 1)">Previous</a>
+      </li>
+      <li class="page-item" *ngFor="let p of totalPagesArray" [class.active]="p === page">
+        <a class="page-link" (click)="changePage(p)">{{ p + 1 }}</a>
+      </li>
+      <li class="page-item" [class.disabled]="page === totalPages - 1">
+        <a class="page-link" (click)="changePage(page + 1)">Next</a>
+      </li>
+    </ul>
+  </nav>
+</div>

@@ -15,7 +15,6 @@
               <a class="nav-link text-dark" routerLink="account" routerLinkActive="active">My Account</a>
             </li>
 
-            <!-- Conditional Links -->
             <!-- Shown only when user has a trainer -->
             <li class="nav-item" *ngIf="hasTrainer">
               <a class="nav-link text-dark" routerLink="trainings" routerLinkActive="active">My Trainings</a>
@@ -28,10 +27,6 @@
             </li>
             <li class="nav-item" *ngIf="!hasTrainer">
               <a class="nav-link text-dark" routerLink="available-trainers" routerLinkActive="active">Available Trainers</a>
-            </li>
-            <!-- Shown only when user doesn't have a trainer -->
-            <li class="nav-item" *ngIf="!hasTrainer">
-              <a class="nav-link text-dark" routerLink="choose-trainer" routerLinkActive="active">Choose Trainer</a>
             </li>
           </ul>
         </nav>

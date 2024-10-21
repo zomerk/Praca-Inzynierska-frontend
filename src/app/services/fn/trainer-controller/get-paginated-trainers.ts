@@ -8,19 +8,18 @@ import { filter, map } from 'rxjs/operators';
 import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
-import { Training } from '../../models/training';
+import { PageTrainer } from '../../models/page-trainer';
 
-export interface AddTraining$Params {
-  userId: number;
-      body: Training
+export interface GetPaginatedTrainers$Params {
+  page?: number;
+  size?: number;
 }
 
-export function addTraining(http: HttpClient, rootUrl: string, params: AddTraining$Params, context?: HttpContext): Observable<StrictHttpResponse<{
-}>> {
-  const rb = new RequestBuilder(rootUrl, addTraining.PATH, 'post');
+export function getPaginatedTrainers(http: HttpClient, rootUrl: string, params?: GetPaginatedTrainers$Params, context?: HttpContext): Observable<StrictHttpResponse<PageTrainer>> {
+  const rb = new RequestBuilder(rootUrl, getPaginatedTrainers.PATH, 'get');
   if (params) {
-    rb.query('userId', params.userId, {});
-    rb.body(params.body, 'application/json');
+    rb.query('page', params.page, {});
+    rb.query('size', params.size, {});
   }
 
   return http.request(
@@ -28,10 +27,9 @@ export function addTraining(http: HttpClient, rootUrl: string, params: AddTraini
   ).pipe(
     filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
     map((r: HttpResponse<any>) => {
-      return r as StrictHttpResponse<{
-      }>;
+      return r as StrictHttpResponse<PageTrainer>;
     })
   );
 }
 
-addTraining.PATH = '/trainer/addTraining';
+getPaginatedTrainers.PATH = '/trainer';

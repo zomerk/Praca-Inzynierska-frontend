@@ -17,8 +17,11 @@ import { deleteTraining } from '../fn/trainer-controller/delete-training';
 import { DeleteTraining$Params } from '../fn/trainer-controller/delete-training';
 import { getFeedback } from '../fn/trainer-controller/get-feedback';
 import { GetFeedback$Params } from '../fn/trainer-controller/get-feedback';
+import { getPaginatedTrainers } from '../fn/trainer-controller/get-paginated-trainers';
+import { GetPaginatedTrainers$Params } from '../fn/trainer-controller/get-paginated-trainers';
 import { getUsersByTrainer } from '../fn/trainer-controller/get-users-by-trainer';
 import { GetUsersByTrainer$Params } from '../fn/trainer-controller/get-users-by-trainer';
+import { PageTrainer } from '../models/page-trainer';
 import { PageUser } from '../models/page-user';
 
 @Injectable({ providedIn: 'root' })
@@ -82,6 +85,31 @@ export class TrainerControllerService extends BaseService {
       map((r: StrictHttpResponse<{
 }>): {
 } => r.body)
+    );
+  }
+
+  /** Path part for operation `getPaginatedTrainers()` */
+  static readonly GetPaginatedTrainersPath = '/trainer';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `getPaginatedTrainers()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getPaginatedTrainers$Response(params?: GetPaginatedTrainers$Params, context?: HttpContext): Observable<StrictHttpResponse<PageTrainer>> {
+    return getPaginatedTrainers(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `getPaginatedTrainers$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getPaginatedTrainers(params?: GetPaginatedTrainers$Params, context?: HttpContext): Observable<PageTrainer> {
+    return this.getPaginatedTrainers$Response(params, context).pipe(
+      map((r: StrictHttpResponse<PageTrainer>): PageTrainer => r.body)
     );
   }
 

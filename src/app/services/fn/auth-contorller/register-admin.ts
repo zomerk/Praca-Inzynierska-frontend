@@ -11,17 +11,14 @@ import { RequestBuilder } from '../../request-builder';
 import { AdminDto } from '../../models/admin-dto';
 
 export interface RegisterAdmin$Params {
-  email: string;
-  firstName: string;
-  lastName: string;
-  password: string;
+      body: AdminDto
 }
 
 export function registerAdmin(http: HttpClient, rootUrl: string, params: RegisterAdmin$Params, context?: HttpContext): Observable<StrictHttpResponse<{
 }>> {
   const rb = new RequestBuilder(rootUrl, registerAdmin.PATH, 'post');
   if (params) {
-    rb.body(params, 'application/json');
+    rb.body(params.body, 'application/json');
   }
 
   return http.request(
