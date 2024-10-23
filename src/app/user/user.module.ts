@@ -7,6 +7,9 @@ import {MainUserComponent} from './pages/main/mainUser.component';
 import { AvailableTrainersComponent } from './pages/available-trainers/available-trainers.component';
 import {FullCalendarModule} from '@fullcalendar/angular';
 import { MyTrainingsComponent} from './pages/my-trainings/my-trainings-component';
+import {RouterModule} from '@angular/router';
+import { TrainingDetailsComponent } from './pages/training-details/training-details-component';
+import {FormsModule} from '@angular/forms';
 
 
 
@@ -15,12 +18,16 @@ import { MyTrainingsComponent} from './pages/my-trainings/my-trainings-component
     HeaderUserComponent,
     MainUserComponent,
     AvailableTrainersComponent,
-    MyTrainingsComponent
+    MyTrainingsComponent,
+    TrainingDetailsComponent,
+    TrainingDetailsComponent
   ],
   exports:[
     HeaderUserComponent
   ],
   imports: [
+    FormsModule,
+    RouterModule,
     CommonModule,
     UserRoutingModule,
     FullCalendarModule,

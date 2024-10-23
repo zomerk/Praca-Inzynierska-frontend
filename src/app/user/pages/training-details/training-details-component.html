@@ -1,0 +1,83 @@
+<div class="container mt-5">
+  <h1 class="text-center">Training Details</h1>
+
+  <div *ngIf="training" class="card">
+    <div class="card-body">
+      <h2 class="card-title">{{ training.workoutName }}</h2>
+      <p class="card-text"><strong>Scheduled At:</strong> {{ training.scheduledAt | date:'short' }}</p>
+      <p class="card-text"><strong>Activity Type:</strong> {{ training.activityType }}</p>
+      <!-- Stylish Segment Display -->
+      <h3 class="mt-4">Segments</h3>
+      <div class="list-group">
+        <div
+          class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+          *ngFor="let segment of training.segmentList">
+          <div class="segment-info">
+            <h5 class="mb-1">{{ segment.segmentName }}</h5>
+            <div *ngIf="segment.durationType=== 'km'" >
+              <p class="mb-1">Value: {{ segment.durationValue }} km. </p>
+            </div>
+            <div *ngIf="segment.durationType=== 'minutes'" >
+              <p class="mb-1">Value: {{ segment.durationValue }} minutes. </p>
+            </div>
+              <small class="text-muted">Intensity: {{ segment.intensity }}</small>
+            </div>
+        </div>
+      </div>
+
+      <!-- Feedback Form -->
+      <h3 class="mt-4">Submit Feedback</h3>
+      <form (ngSubmit)="submitFeedback()">
+        <!-- Feedback Text -->
+        <div class="form-group">
+          <label for="feedbackText">Feedback</label>
+          <textarea
+            id="feedbackText"
+            class="form-control"
+            [(ngModel)]="feedback.feedbackText"
+            name="feedbackText"
+            placeholder="Leave your feedback here..."
+            rows="4"
+            required>
+          </textarea>
+        </div>
+
+        <!-- Feeling Dropdown -->
+        <div class="form-group mt-3">
+          <label for="feeling">Feeling</label>
+          <select
+            id="feeling"
+            class="form-select"
+            [(ngModel)]="feedback.feeling"
+            name="feeling"
+            required>
+            <option [ngValue]="'POSITIVE'">Positive</option>
+            <option [ngValue]="'NEUTRAL'">Neutral</option>
+            <option [ngValue]="'NEGATIVE'">Negative</option>
+          </select>
+        </div>
+
+        <!-- Rating Value (0-10) -->
+        <div class="form-group mt-3">
+          <label for="ratingValue">Rating (0-10)</label>
+          <input
+            id="ratingValue"
+            type="number"
+            class="form-control"
+            [(ngModel)]="feedback.ratingValue"
+            name="ratingValue"
+            min="0"
+            max="10"
+            required>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary mt-4">Submit Feedback</button>
+      </form>
+    </div>
+  </div>
+
+  <div *ngIf="!training" class="text-center mt-3">
+    <p>Loading training details...</p>
+  </div>
+</div>

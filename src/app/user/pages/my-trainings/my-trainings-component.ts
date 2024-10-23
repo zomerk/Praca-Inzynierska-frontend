@@ -4,6 +4,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/daygrid';
 import { UserControllerService } from '../../../services/services/user-controller.service';
 import { Training } from '../../../services/models/training';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-my-trainings',
@@ -27,7 +28,7 @@ export class MyTrainingsComponent implements OnInit {
 
   private trainings: Training[] = [];
 
-  constructor(private trainingService: UserControllerService) { }
+  constructor(private trainingService: UserControllerService, private router:Router) { }
 
   ngOnInit(): void {
     this.loadTrainings(); // Fetch trainings on component initialization
@@ -51,6 +52,7 @@ export class MyTrainingsComponent implements OnInit {
       title: training.workoutName,
       start: training.scheduledAt, // Make sure this is in ISO format, or convert if needed
       extendedProps: {
+        id: training.trainingId,
         segmentList: training.segmentList, // Store segments for access on click
         activityType: training.activityType,
       },
@@ -60,5 +62,9 @@ export class MyTrainingsComponent implements OnInit {
 
   // Handle event click and open dialog to show details
   handleEventClick(event: any): void {
+    const trainingId = event.event._def.extendedProps.id;
+
+    //console.log(event.event._def.extendedProps.id);
+    this.router.navigate(['/user/training-details',  trainingId]); // N
   }
 }

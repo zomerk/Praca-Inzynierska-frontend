@@ -5,6 +5,7 @@ import {TrainerRequestsComponent} from '../admin/pages/trainer-requests/trainer-
 import {MainUserComponent} from './pages/main/mainUser.component';
 import {AvailableTrainersComponent} from './pages/available-trainers/available-trainers.component';
 import {MyTrainingsComponent} from './pages/my-trainings/my-trainings-component';
+import {TrainingDetailsComponent} from './pages/training-details/training-details-component';
 
 const routes: Routes =  [{
   path: '',
@@ -17,6 +18,10 @@ const routes: Routes =  [{
     {
       path:'trainings',
       component:MyTrainingsComponent
+    },
+    {
+      path:'training-details/:id',
+      component: TrainingDetailsComponent
     }
   ]
 }
