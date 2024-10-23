@@ -5,6 +5,9 @@ import { UserRoutingModule } from './user-routing.module';
 import {HeaderUserComponent} from './components/header/headerUser.component';
 import {MainUserComponent} from './pages/main/mainUser.component';
 import { AvailableTrainersComponent } from './pages/available-trainers/available-trainers.component';
+import {FullCalendarModule} from '@fullcalendar/angular';
+import { MyTrainingsComponent} from './pages/my-trainings/my-trainings-component';
+
 
 
 @NgModule({
@@ -12,13 +15,15 @@ import { AvailableTrainersComponent } from './pages/available-trainers/available
     HeaderUserComponent,
     MainUserComponent,
     AvailableTrainersComponent,
+    MyTrainingsComponent
   ],
   exports:[
     HeaderUserComponent
   ],
   imports: [
     CommonModule,
-    UserRoutingModule
+    UserRoutingModule,
+    FullCalendarModule,
   ]
 })
 export class UserModule { }

@@ -4,6 +4,7 @@ import {MainTrainerComponent} from '../admin/pages/main/mainTrainer.component';
 import {TrainerRequestsComponent} from '../admin/pages/trainer-requests/trainer-requests.component';
 import {MainUserComponent} from './pages/main/mainUser.component';
 import {AvailableTrainersComponent} from './pages/available-trainers/available-trainers.component';
+import {MyTrainingsComponent} from './pages/my-trainings/my-trainings-component';
 
 const routes: Routes =  [{
   path: '',
@@ -12,6 +13,10 @@ const routes: Routes =  [{
     {
       path: 'available-trainers',
       component: AvailableTrainersComponent,
+    },
+    {
+      path:'trainings',
+      component:MyTrainingsComponent
     }
   ]
 }

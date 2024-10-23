@@ -1,0 +1,52 @@
+/* FullCalendar custom styling */
+.fc .fc-toolbar {
+  background-color: #f8f9fa; /* Light background for toolbar */
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.fc .fc-button {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.fc .fc-button:hover {
+  background-color: #0056b3;
+}
+
+.fc .fc-toolbar-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #343a40;
+}
+
+.fc .fc-event {
+  font-size: 14px;
+  padding: 5px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.fc .fc-daygrid-day {
+  padding: 10px;
+}
+
+.fc .fc-daygrid-event {
+  color: #fff;
+  background-color: #28a745;
+  border: none;
+  border-radius: 4px;
+}
+
+.fc .fc-highlight {
+  background-color: #d4edda;
+}
+
+/* Add some margins for spacing */
+.container {
+  margin-top: 20px;
+}
