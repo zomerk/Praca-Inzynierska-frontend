@@ -19,6 +19,8 @@ import { getFeedback } from '../fn/trainer-controller/get-feedback';
 import { GetFeedback$Params } from '../fn/trainer-controller/get-feedback';
 import { getPaginatedTrainers } from '../fn/trainer-controller/get-paginated-trainers';
 import { GetPaginatedTrainers$Params } from '../fn/trainer-controller/get-paginated-trainers';
+import { getUser1 } from '../fn/trainer-controller/get-user-1';
+import { GetUser1$Params } from '../fn/trainer-controller/get-user-1';
 import { getUsersByTrainer } from '../fn/trainer-controller/get-users-by-trainer';
 import { GetUsersByTrainer$Params } from '../fn/trainer-controller/get-users-by-trainer';
 import { PageTrainer } from '../models/page-trainer';
@@ -135,6 +137,35 @@ export class TrainerControllerService extends BaseService {
   getUsersByTrainer(params?: GetUsersByTrainer$Params, context?: HttpContext): Observable<PageUser> {
     return this.getUsersByTrainer$Response(params, context).pipe(
       map((r: StrictHttpResponse<PageUser>): PageUser => r.body)
+    );
+  }
+
+  /** Path part for operation `getUser1()` */
+  static readonly GetUser1Path = '/trainer/user';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `getUser1()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getUser1$Response(params: GetUser1$Params, context?: HttpContext): Observable<StrictHttpResponse<{
+}>> {
+    return getUser1(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `getUser1$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getUser1(params: GetUser1$Params, context?: HttpContext): Observable<{
+}> {
+    return this.getUser1$Response(params, context).pipe(
+      map((r: StrictHttpResponse<{
+}>): {
+} => r.body)
     );
   }
 

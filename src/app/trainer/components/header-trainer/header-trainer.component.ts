@@ -9,6 +9,10 @@ import {Router} from '@angular/router';
 export class HeaderTrainerComponent {
   constructor(private router: Router) {
   }
+  // Method to handle the redirection to My Clients
+  goToClients() {
+    this.router.navigate(['/trainer']);
+  }
   logout() {
     // Handle logout logic
     localStorage.clear()// Assuming you have an AuthService

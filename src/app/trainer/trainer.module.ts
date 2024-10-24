@@ -5,6 +5,9 @@ import { TrainerRoutingModule } from './trainer-routing.module';
 import { MainTrainerComponent } from './pages/main-trainer/main-trainer.component';
 import { HeaderTrainerComponent } from './components/header-trainer/header-trainer.component';
 import { TrainerUserComponent } from './pages/trainer-user/trainer-user.component';
+import { TrainerTrainingsComponent } from './pages/trainer-trainings/trainer-trainings-component';
+import {FormsModule} from '@angular/forms';
+import {FullCalendarModule} from '@fullcalendar/angular';
 
 
 @NgModule({
@@ -12,10 +15,13 @@ import { TrainerUserComponent } from './pages/trainer-user/trainer-user.componen
     MainTrainerComponent,
     HeaderTrainerComponent,
     TrainerUserComponent,
+    TrainerTrainingsComponent,
   ],
   imports: [
     CommonModule,
-    TrainerRoutingModule
+    TrainerRoutingModule,
+    FormsModule,
+    FullCalendarModule,
   ]
 })
 export class TrainerModule { }
