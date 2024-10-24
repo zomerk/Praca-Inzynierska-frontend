@@ -5,7 +5,7 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { MainTrainerComponent } from './pages/main/mainTrainer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { TrainerRequestsComponent } from './pages/trainer-requests/trainer-requests.component';
-import {CreateAdministratorComponent} from './pages/create-administrator/create-administrator.component';
+import {CreateAdministratorComponent} from './pages/create-administrator/create-administrator-component';
 import {FormsModule} from '@angular/forms';
 
 

@@ -6,6 +6,7 @@ import {MainUserComponent} from './pages/main/mainUser.component';
 import {AvailableTrainersComponent} from './pages/available-trainers/available-trainers.component';
 import {MyTrainingsComponent} from './pages/my-trainings/my-trainings-component';
 import {TrainingDetailsComponent} from './pages/training-details/training-details-component';
+import {AccountComponent} from './pages/account/account.component';
 
 const routes: Routes =  [{
   path: '',
@@ -22,6 +23,10 @@ const routes: Routes =  [{
     {
       path:'training-details/:id',
       component: TrainingDetailsComponent
+    },
+    {
+      path:'account',
+      component: AccountComponent,
     }
   ]
 }

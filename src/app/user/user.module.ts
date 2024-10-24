@@ -10,6 +10,7 @@ import { MyTrainingsComponent} from './pages/my-trainings/my-trainings-component
 import {RouterModule} from '@angular/router';
 import { TrainingDetailsComponent } from './pages/training-details/training-details-component';
 import {FormsModule} from '@angular/forms';
+import { AccountComponent } from './pages/account/account.component';
 
 
 
@@ -20,7 +21,8 @@ import {FormsModule} from '@angular/forms';
     AvailableTrainersComponent,
     MyTrainingsComponent,
     TrainingDetailsComponent,
-    TrainingDetailsComponent
+    TrainingDetailsComponent,
+    AccountComponent
   ],
   exports:[
     HeaderUserComponent

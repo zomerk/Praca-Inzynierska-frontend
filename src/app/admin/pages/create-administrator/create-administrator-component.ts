@@ -5,8 +5,8 @@ import {AuthContorllerService} from '../../../services/services/auth-contorller.
 
 @Component({
   selector: 'app-create-administrator',
-  templateUrl: './create-administrator.component.html',
-  styleUrls: ['./create-administrator.component.css']
+  templateUrl: './create-administrator-component.html',
+  styleUrls: ['./create-administrator-component.css']
 })
 export class CreateAdministratorComponent {
   admin = {
@@ -25,7 +25,7 @@ export class CreateAdministratorComponent {
     this.adminService.registerAdmin({body:this.admin}).subscribe({
       next: (response) => {
         console.log('Admin created successfully', response);
-        this.router.navigate(['/home']); // Redirect after successful creation
+        alert("Admin created successfully");
       },
       error: (err) => {
         console.error('Error creating admin', err);

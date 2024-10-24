@@ -3,7 +3,4 @@ li > a:hover {
   border-radius: 5px;
   text-decoration: underline;
 }
-.nav-link.active {
-  background-color: #a8041d;
-  border-radius: 5px;
-}
+

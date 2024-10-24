@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {MainTrainerComponent} from './pages/main/mainTrainer.component';
 import {TrainerRequestsComponent} from './pages/trainer-requests/trainer-requests.component';
+import {CreateAdministratorComponent} from './pages/create-administrator/create-administrator-component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,10 @@ const routes: Routes = [
       {
         path: 'trainer-requests',
         component: TrainerRequestsComponent,
+      },
+      {
+        path: 'create-administrator',
+        component: CreateAdministratorComponent,
       }
     ]
   }

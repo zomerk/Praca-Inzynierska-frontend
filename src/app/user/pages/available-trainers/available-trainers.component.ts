@@ -38,8 +38,9 @@ export class AvailableTrainersComponent implements OnInit {
     this.userControllerService.signUpToTrainer({trainerId:trainerId}).subscribe({
       next: () => {
         alert('Successfully signed up to trainer');
-        window.location.reload();
-        this.router.navigate(['/user']);
+       // window.location.reload();
+
+        this.router.navigate(['/user/trainings']);
         // Redirect or show confirmation
       },
       error: err => console.error('Failed to sign up', err)

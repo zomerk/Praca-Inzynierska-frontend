@@ -19,4 +19,5 @@ export { Trainer } from './models/trainer';
 export { TrainerDto } from './models/trainer-dto';
 export { Training } from './models/training';
 export { User } from './models/user';
+export { UserChangeDto } from './models/user-change-dto';
 export { UserDto } from './models/user-dto';

@@ -23,15 +23,48 @@ import { getTrainer } from '../fn/user-controller/get-trainer';
 import { GetTrainer$Params } from '../fn/user-controller/get-trainer';
 import { getTraining } from '../fn/user-controller/get-training';
 import { GetTraining$Params } from '../fn/user-controller/get-training';
+import { getUser } from '../fn/user-controller/get-user';
+import { GetUser$Params } from '../fn/user-controller/get-user';
 import { postComplaint } from '../fn/user-controller/post-complaint';
 import { PostComplaint$Params } from '../fn/user-controller/post-complaint';
 import { signUpToTrainer } from '../fn/user-controller/sign-up-to-trainer';
 import { SignUpToTrainer$Params } from '../fn/user-controller/sign-up-to-trainer';
+import { updateUser } from '../fn/user-controller/update-user';
+import { UpdateUser$Params } from '../fn/user-controller/update-user';
 
 @Injectable({ providedIn: 'root' })
 export class UserControllerService extends BaseService {
   constructor(config: ApiConfiguration, http: HttpClient) {
     super(config, http);
+  }
+
+  /** Path part for operation `updateUser()` */
+  static readonly UpdateUserPath = '/user/update';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `updateUser()` instead.
+   *
+   * This method sends `application/json` and handles request body of type `application/json`.
+   */
+  updateUser$Response(params: UpdateUser$Params, context?: HttpContext): Observable<StrictHttpResponse<{
+}>> {
+    return updateUser(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `updateUser$Response()` instead.
+   *
+   * This method sends `application/json` and handles request body of type `application/json`.
+   */
+  updateUser(params: UpdateUser$Params, context?: HttpContext): Observable<{
+}> {
+    return this.updateUser$Response(params, context).pipe(
+      map((r: StrictHttpResponse<{
+}>): {
+} => r.body)
+    );
   }
 
   /** Path part for operation `signUpToTrainer()` */
@@ -202,6 +235,35 @@ export class UserControllerService extends BaseService {
   postComplaint(params: PostComplaint$Params, context?: HttpContext): Observable<{
 }> {
     return this.postComplaint$Response(params, context).pipe(
+      map((r: StrictHttpResponse<{
+}>): {
+} => r.body)
+    );
+  }
+
+  /** Path part for operation `getUser()` */
+  static readonly GetUserPath = '/user/user';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `getUser()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getUser$Response(params?: GetUser$Params, context?: HttpContext): Observable<StrictHttpResponse<{
+}>> {
+    return getUser(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `getUser$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getUser(params?: GetUser$Params, context?: HttpContext): Observable<{
+}> {
+    return this.getUser$Response(params, context).pipe(
       map((r: StrictHttpResponse<{
 }>): {
 } => r.body)

@@ -1,5 +1,6 @@
 import {ChangeDetectorRef, Component, Injectable, OnInit} from '@angular/core';
 import {UserControllerService} from '../../../services/services/user-controller.service';
+import {Router} from '@angular/router';
 @Injectable(
   {providedIn: 'root'}
 )
@@ -11,7 +12,7 @@ import {UserControllerService} from '../../../services/services/user-controller.
 export class HeaderUserComponent implements OnInit {
   hasTrainer: boolean = false; // To hold the user's trainer status
 
-  constructor(private userService: UserControllerService) { }
+  constructor(private userService: UserControllerService, private router: Router) { }
 
   ngOnInit(): void {
     this.checkTrainerStatus();  // Call the function to check if the user has a trainer
@@ -33,7 +34,8 @@ export class HeaderUserComponent implements OnInit {
 
 
   logout() {
-    // Implement logout logic here
-    //this.userService.logout();
+    localStorage.clear();
+
+    this.router.navigate(['/']);
   }
 }

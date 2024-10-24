@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-main-trainer',
+  selector: 'app-mainTrainer-trainer',
   templateUrl: './mainTrainer.component.html',
   styleUrl: './mainTrainer.component.css'
 })

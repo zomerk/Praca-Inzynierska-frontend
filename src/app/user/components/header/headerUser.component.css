@@ -1,0 +1,5 @@
+li > a:hover {
+  background-color: #74aedc;
+  border-radius: 5px;
+  text-decoration: underline;
+}
