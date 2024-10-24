@@ -1,0 +1,31 @@
+<div class="bg-light py-3 shadow-sm">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 d-flex justify-content-between align-items-center">
+        <!-- Logo or App Name -->
+        <a routerLink="/" class="d-flex align-items-center text-decoration-none">
+          <img src="./assets/img/logo.svg" alt="App Logo" width="150" height="50">
+        </a>
+
+        <!-- Navigation Links for Trainer -->
+        <nav>
+          <ul class="nav">
+            <li class="nav-item">
+              <a class="nav-link text-dark" routerLink="my-clients" routerLinkActive="active">My Clients</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-dark" routerLink="clients-training" routerLinkActive="active">Clients Training</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-dark" routerLink="chat-with-client" routerLinkActive="active">Chat with Client</a>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Logout Button -->
+        <button class="btn btn-danger" (click)="logout()">Logout</button>
+      </div>
+    </div>
+  </div>
+</div>
+

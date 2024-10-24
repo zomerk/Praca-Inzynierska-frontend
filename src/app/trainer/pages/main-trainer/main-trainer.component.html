@@ -1,0 +1,55 @@
+<div class="container mt-4">
+
+  <ng-container *ngIf="users.content?.length === 0">
+    <p>You have no clients.</p>
+  </ng-container>
+
+  <ng-container *ngIf="users.content?.length !== 0">
+    <!-- Sorting Options -->
+<!--    <div class="mb-3">-->
+<!--      <span>Sort by: </span>-->
+<!--      <button class="btn btn-link" (click)="changeSort('lastName')">Last Name</button>-->
+<!--      <button class="btn btn-link" (click)="changeSort('firstName')">First Name</button>-->
+<!--      <button class="btn btn-link" (click)="changeSort('email')">Email</button>-->
+<!--      <button class="btn btn-link" (click)="changeSort('fitnessLevel')">Fitness Level</button>-->
+<!--    </div>-->
+
+    <!-- Users as Cards -->
+    <div class="row">
+      <div class="col-md-4 mb-4" *ngFor="let user of users.content">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">{{ user.firstName }} {{ user.lastName }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ user.email }}</h6>
+            <p class="card-text">
+              <strong>Fitness Level:</strong> {{ user.fitnessLevel }}
+            </p>
+            <div class="mt-3 d-flex justify-content-between">
+              <button class="btn btn-info" (click)="router.navigate(['/trainer/user-profile', user.userId])">View Profile</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pagination -->
+    <nav>
+      <ul class="pagination justify-content-center">
+        <li class="page-item" [class.disabled]="page === 0">
+          <a class="page-link" (click)="changePage(page - 1)" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+
+        <ng-container *ngFor="let p of [].constructor(Math.ceil(totalItems / size)); let i = index">
+          <li class="page-item" [class.active]="i === page">
+            <a class="page-link" (click)="changePage(i)">{{ i + 1 }}</a>
+          </li>
+        </ng-container>
+
+        <li class="page-item" [class.disabled]="page >= (totalItems / size) - 1">
+          <a class="page-link" (click)="changePage(page + 1)" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+

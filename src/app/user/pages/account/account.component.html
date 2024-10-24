@@ -1,0 +1,95 @@
+<div class="bg-light min-vh-100 py-3">
+  <div class="container mt-5">
+    <h1 class="text-center">My Account</h1>
+
+    <!-- Display error message -->
+    <div *ngIf="errorMsg.length !== 0" class="alert alert-danger text-center">
+      {{ errorMsg }}
+    </div>
+
+    <form (ngSubmit)="updateProfile()" class="mt-4">
+      <!-- First Name -->
+      <div class="mb-3">
+        <label for="firstName" class="form-label">First Name</label>
+        <input
+          type="text"
+          id="firstName"
+          class="form-control"
+          [(ngModel)]="user.firstName"
+          name="firstName"
+          [readonly]="!isEditing"
+          required>
+        <div *ngIf="!isEditing && !user.firstName" class="text-danger">First Name is required</div>
+      </div>
+
+      <!-- Last Name -->
+      <div class="mb-3">
+        <label for="lastName" class="form-label">Last Name</label>
+        <input
+          type="text"
+          id="lastName"
+          class="form-control"
+          [(ngModel)]="user.lastName"
+          name="lastName"
+          [readonly]="!isEditing"
+          required>
+        <div *ngIf="!isEditing && !user.lastName" class="text-danger">Last Name is required</div>
+      </div>
+
+      <!-- Age -->
+      <div class="mb-3">
+        <label for="age" class="form-label">Age</label>
+        <input
+          type="number"
+          id="age"
+          class="form-control"
+          [(ngModel)]="user.age"
+          name="age"
+          min="0"
+          [readonly]="!isEditing"
+          required>
+        <div *ngIf="!isEditing && user.age === null" class="text-danger">Age is required</div>
+      </div>
+
+      <!-- Fitness Level -->
+      <div class="mb-3">
+        <label for="fitnessLevel" class="form-label">Fitness Level</label>
+        <select
+          id="fitnessLevel"
+          class="form-select"
+          [(ngModel)]="user.fitnessLevel"
+          name="fitnessLevel"
+          [disabled]="!isEditing"
+          required>
+          <option [ngValue]="'Beginner'">Beginner</option>
+          <option [ngValue]="'Intermediate'">Intermediate</option>
+          <option [ngValue]="'Advanced'">Advanced</option>
+        </select>
+      </div>
+
+      <!-- Goal -->
+      <div class="mb-3">
+        <label for="goal" class="form-label">Goal</label>
+        <textarea
+          id="goal"
+          class="form-control"
+          [(ngModel)]="user.goal"
+          name="goal"
+          rows="3"
+          [readonly]="!isEditing"
+          required></textarea>
+      </div>
+
+      <!-- Buttons -->
+      <div class="d-flex justify-content-between mt-4">
+        <button type="button" class="btn btn-secondary" (click)="toggleEdit()">
+          {{ isEditing ? 'Cancel' : 'Edit' }}
+        </button>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="!isEditing">Update Profile</button>
+      </div>
+    </form>
+  </div>
+</div>

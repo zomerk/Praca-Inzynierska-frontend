@@ -1,0 +1,24 @@
+.table-hover tbody tr:hover {
+  background-color: #f1f1f1; /* Light gray background on hover */
+}
+
+.table th {
+  cursor: pointer; /* Cursor pointer for sortable headers */
+  position: relative; /* Needed for sorting indicator positioning */
+}
+
+.table th span {
+  position: absolute; /* Position indicator next to header text */
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.pagination {
+  margin: 20px 0; /* Space above and below pagination */
+}
+
+.page-item.disabled .page-link {
+  pointer-events: none; /* Disable pointer events for disabled pagination */
+  opacity: 0.5; /* Dim disabled pagination items */
+}
