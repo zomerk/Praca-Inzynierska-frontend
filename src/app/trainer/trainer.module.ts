@@ -8,6 +8,11 @@ import { TrainerUserComponent } from './pages/trainer-user/trainer-user.componen
 import { TrainerTrainingsComponent } from './pages/trainer-trainings/trainer-trainings-component';
 import {FormsModule} from '@angular/forms';
 import {FullCalendarModule} from '@fullcalendar/angular';
+import { AddTrainingComponent } from './pages/add-training-component/add-training-component';
+import {
+  TrainerTrainingFeedbackComponent
+} from './pages/trainer-training-feedback-component/trainer-training-feedback-component.component';
+
 
 
 @NgModule({
@@ -16,6 +21,8 @@ import {FullCalendarModule} from '@fullcalendar/angular';
     HeaderTrainerComponent,
     TrainerUserComponent,
     TrainerTrainingsComponent,
+    AddTrainingComponent,
+    TrainerTrainingFeedbackComponent
   ],
   imports: [
     CommonModule,

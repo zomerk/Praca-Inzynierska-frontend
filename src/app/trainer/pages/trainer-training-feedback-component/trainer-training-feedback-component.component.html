@@ -1,0 +1,54 @@
+<div class="container mt-5">
+  <h1 class="text-center">Training and Feedback Details</h1>
+
+  <div class="d-flex justify-content-between align-items-center">
+    <h2 class="card-title">{{ training?.workoutName }}</h2>
+    <button class="btn btn-danger" (click)="deleteFeedback()" title="Delete Feedback" *ngIf="feedback">Delete Feedback</button>
+  </div>
+
+  <div *ngIf="training" class="card mt-3">
+    <div class="card-body">
+      <p class="card-text"><strong>Scheduled At:</strong> {{ training.scheduledAt | date:'short' }}</p>
+      <p class="card-text"><strong>Activity Type:</strong> {{ training.activityType }}</p>
+
+      <!-- Stylish Segment Display -->
+      <h3 class="mt-4">Segments</h3>
+      <div class="list-group">
+        <div
+          class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+          *ngFor="let segment of training.segmentList">
+          <div class="segment-info">
+            <h5 class="mb-1">{{ segment.segmentName }}</h5>
+            <div *ngIf="segment.durationType === 'km'">
+              <p class="mb-1">Value: {{ segment.durationValue }} km.</p>
+            </div>
+            <div *ngIf="segment.durationType === 'minutes'">
+              <p class="mb-1">Value: {{ segment.durationValue }} minutes.</p>
+            </div>
+            <small class="text-muted">Intensity: {{ segment.intensity }}</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feedback Section -->
+      <h3 class="mt-4">Feedback</h3>
+      <div *ngIf="feedback" class="card mt-3">
+        <div class="card-body">
+          <p class="card-text"><strong>Submitted At:</strong> {{ feedback.submittedAt | date:'short' }}</p>
+          <h4>Feedback Text</h4>
+          <p>{{ feedback.feedbackText }}</p>
+          <p><strong>Feeling:</strong> {{ feedback.feeling }}</p>
+          <p><strong>Rating:</strong> {{ feedback.ratingValue }}/10</p>
+        </div>
+      </div>
+
+      <div *ngIf="!feedback" class="text-center mt-3">
+        <p>No feedback yet.</p>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!training" class="text-center mt-3">
+    <p>Loading training details...</p>
+  </div>
+</div>

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {MainTrainerComponent} from './pages/main-trainer/main-trainer.component';
 import {TrainerUserComponent} from './pages/trainer-user/trainer-user.component';
 import {TrainerTrainingsComponent} from './pages/trainer-trainings/trainer-trainings-component';
+import {AddTrainingComponent} from './pages/add-training-component/add-training-component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
         path: 'clients-training',
         component: TrainerTrainingsComponent
       },
+      {
+        path: 'add-training/:date',
+        component: AddTrainingComponent
+      }
       // {
       //   path: 'chat-with-client',
       //   component: JAKIS

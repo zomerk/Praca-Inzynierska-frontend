@@ -4,6 +4,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/daygrid';
 import { TrainerControllerService } from '../../../services/services/trainer-controller.service';
 import { Training } from '../../../services/models/training';
+import interactionPlugin from '@fullcalendar/interaction';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -13,7 +14,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class TrainerTrainingsComponent implements OnInit {
   calendarOptions: CalendarOptions = {
-    plugins: [dayGridPlugin, timeGridPlugin],
+    plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
     headerToolbar: {
       left: 'prev,next today',
       center: 'title',
@@ -21,7 +22,7 @@ export class TrainerTrainingsComponent implements OnInit {
     },
     initialView: 'dayGridMonth',
     selectable: true, // Allows clicking on empty dates
-    select: this.handleDateSelect.bind(this), // Handle date selection
+    dateClick: this.handleDateSelect.bind(this),
     eventColor: '#F4C584', // Default color for events
     weekends: true,
     events: [],
@@ -32,7 +33,6 @@ export class TrainerTrainingsComponent implements OnInit {
 
   constructor(
     private trainerService: TrainerControllerService,
-    private route: ActivatedRoute,
     private router: Router
   ) { }
 
@@ -48,7 +48,6 @@ export class TrainerTrainingsComponent implements OnInit {
     this.trainerService.getUser1({userId:Number(userId)}).subscribe({
       next: (trainings) => {
         console.log(trainings);
-        console.log("siema siema ");
         this.calendarOptions.events = this.formatTrainingsToEvents(trainings as Training[]);
       },
       error: (err) => {
@@ -72,13 +71,15 @@ export class TrainerTrainingsComponent implements OnInit {
 
   // Handle event click to view training details and feedback
   handleEventClick(event: any): void {
-    const trainingId = event.event._def.extendedProps.id;
-    this.router.navigate(['/trainer/training-details', this.userId, trainingId]); // Navigate to training details page
+    const trainingDate = event.event._def.extendedProps.id;
+
+    this.router.navigate(['/trainer/user-profile/'+ this.userId+'/training-details', trainingDate]); // Navigate to training details page
   }
 
   // Handle date selection for adding a new training
   handleDateSelect(selectInfo: any): void {
-    const selectedDate = selectInfo.startStr; // The selected date in ISO format
-    this.router.navigate(['/trainer/add-training', this.userId, { date: selectedDate }]); // Navigate to a page for creating a new training
+    const selectedDate = selectInfo.dateStr;
+    console.log(selectedDate)// The selected date in ISO format
+    this.router.navigate(['/trainer/user-profile/'+ this.userId+'/add-training', selectedDate]); // Navigate to a page for creating a new training
   }
 }

@@ -1,0 +1,112 @@
+<div class="container mt-5">
+  <h1 class="text-center">Create New Training</h1>
+
+  <form (ngSubmit)="submitTraining()" #trainingForm="ngForm">
+    <!-- Workout Name -->
+    <div class="form-group">
+      <label for="workoutName">Workout Name</label>
+      <input
+        type="text"
+        id="workoutName"
+        class="form-control"
+        [(ngModel)]="training.workoutName"
+        name="workoutName"
+        placeholder="Enter workout name"
+        required
+      >
+    </div>
+
+    <!-- Scheduled Time (Date Fixed, Only Time Adjustable) -->
+    <div class="form-group mt-3">
+      <label for="scheduledTime">Scheduled Time</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          [value]="initialDate"
+          readonly
+          disabled
+        >
+        <input
+          type="time"
+          id="scheduledTime"
+          class="form-control"
+          (change)="onTimeChange($event)"
+          required
+        >
+      </div>
+    </div>
+
+    <!-- Activity Type -->
+    <div class="form-group mt-3">
+      <label for="activityType">Activity Type</label>
+      <select
+        id="activityType"
+        class="form-control"
+        [(ngModel)]="training.activityType"
+        name="activityType"
+        required
+      >
+        <option value="Cardio">Cardio</option>
+        <option value="Strength">Strength</option>
+        <option value="Flexibility">Flexibility</option>
+      </select>
+    </div>
+
+    <!-- Segment Fields -->
+    <h3 class="mt-4">Segments</h3>
+    <div *ngFor="let segment of training.segmentList; let i = index" class="mb-3">
+      <div class="card p-3">
+        <h5>Segment {{ i + 1 }}</h5>
+        <div class="form-group">
+          <label>Segment Name</label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="segment.segmentName"
+            name="segmentName{{ i }}"
+            placeholder="Enter segment name"
+            required
+          >
+        </div>
+        <div class="form-group mt-2">
+          <label>Duration Type</label>
+          <select
+            class="form-control"
+            [(ngModel)]="segment.durationType"
+            name="durationType{{ i }}"
+            required
+          >
+            <option value="km">Kilometers</option>
+            <option value="minutes">Minutes</option>
+          </select>
+        </div>
+        <div class="form-group mt-2">
+          <label>Duration Value</label>
+          <input
+            type="number"
+            class="form-control"
+            [(ngModel)]="segment.durationValue"
+            name="durationValue{{ i }}"
+            placeholder="Enter duration"
+            required
+          >
+        </div>
+        <div class="form-group mt-2">
+          <label>Intensity</label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="segment.intensity"
+            name="intensity{{ i }}"
+            placeholder="Enter intensity level"
+          >
+        </div>
+        <button type="button" class="btn btn-danger mt-3" (click)="removeSegment(i)">Remove Segment</button>
+      </div>
+    </div>
+    <button type="button" class="btn btn-secondary mt-3" (click)="addSegment()">Add Segment</button>
+
+    <button type="submit" class="btn btn-primary mt-4">Save Training</button>
+  </form>
+</div>
