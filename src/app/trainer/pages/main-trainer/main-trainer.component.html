@@ -30,7 +30,7 @@
               <strong>Fitness Level:</strong> {{ user.fitnessLevel }}
             </p>
             <div class="mt-3 d-flex justify-content-between">
-              <button class="btn btn-info" (click)="router.navigate(['/trainer/user-profile', user.userId])">View Profile</button>
+              <button class="btn btn-info" (click)="router.navigate(['/trainer/user-profile/' +  user.userId + '/clients-training'])">View Profile</button>
             </div>
           </div>
         </div>

@@ -8,18 +8,16 @@ import { filter, map } from 'rxjs/operators';
 import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
-import { Message } from '../../models/message';
 
-export interface GetChatHistory$Params {
-  userUsername: number;
-  trainerName: number;
+export interface GetTraining1$Params {
+  trainingId: number;
 }
 
-export function getChatHistory(http: HttpClient, rootUrl: string, params: GetChatHistory$Params, context?: HttpContext): Observable<StrictHttpResponse<Array<Message>>> {
-  const rb = new RequestBuilder(rootUrl, getChatHistory.PATH, 'get');
+export function getTraining1(http: HttpClient, rootUrl: string, params: GetTraining1$Params, context?: HttpContext): Observable<StrictHttpResponse<{
+}>> {
+  const rb = new RequestBuilder(rootUrl, getTraining1.PATH, 'get');
   if (params) {
-    rb.query('userUsername', params.userUsername, {});
-    rb.query('trainerName', params.trainerName, {});
+    rb.query('trainingId', params.trainingId, {});
   }
 
   return http.request(
@@ -27,9 +25,10 @@ export function getChatHistory(http: HttpClient, rootUrl: string, params: GetCha
   ).pipe(
     filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
     map((r: HttpResponse<any>) => {
-      return r as StrictHttpResponse<Array<Message>>;
+      return r as StrictHttpResponse<{
+      }>;
     })
   );
 }
 
-getChatHistory.PATH = '/chat/history';
+getTraining1.PATH = '/trainer/training';

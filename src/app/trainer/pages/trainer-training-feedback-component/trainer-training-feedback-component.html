@@ -2,8 +2,8 @@
   <h1 class="text-center">Training and Feedback Details</h1>
 
   <div class="d-flex justify-content-between align-items-center">
-    <h2 class="card-title">{{ training?.workoutName }}</h2>
-    <button class="btn btn-danger" (click)="deleteFeedback()" title="Delete Feedback" *ngIf="feedback">Delete Feedback</button>
+    <h2 class="card-title">{{ training.workoutName }}</h2>
+<!--    <button class="btn btn-danger" (click)="deleteFeedback()" title="Delete Feedback" *ngIf="feedback">Delete Feedback</button>-->
   </div>
 
   <div *ngIf="training" class="card mt-3">
@@ -34,7 +34,6 @@
       <h3 class="mt-4">Feedback</h3>
       <div *ngIf="feedback" class="card mt-3">
         <div class="card-body">
-          <p class="card-text"><strong>Submitted At:</strong> {{ feedback.submittedAt | date:'short' }}</p>
           <h4>Feedback Text</h4>
           <p>{{ feedback.feedbackText }}</p>
           <p><strong>Feeling:</strong> {{ feedback.feeling }}</p>

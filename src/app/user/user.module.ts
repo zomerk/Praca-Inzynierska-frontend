@@ -11,6 +11,7 @@ import {RouterModule} from '@angular/router';
 import { TrainingDetailsComponent } from './pages/training-details/training-details-component';
 import {FormsModule} from '@angular/forms';
 import { AccountComponent } from './pages/account/account.component';
+import { ChatComponent } from './pages/chat/chat.component';
 
 
 
@@ -22,7 +23,8 @@ import { AccountComponent } from './pages/account/account.component';
     MyTrainingsComponent,
     TrainingDetailsComponent,
     TrainingDetailsComponent,
-    AccountComponent
+    AccountComponent,
+    ChatComponent
   ],
   exports:[
     HeaderUserComponent

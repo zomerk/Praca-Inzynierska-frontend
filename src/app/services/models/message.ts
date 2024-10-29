@@ -6,4 +6,5 @@ export interface Message {
   content?: string;
   id?: number;
   timestamp?: string;
+  userSender?: boolean;
 }

@@ -11,7 +11,8 @@ import {FullCalendarModule} from '@fullcalendar/angular';
 import { AddTrainingComponent } from './pages/add-training-component/add-training-component';
 import {
   TrainerTrainingFeedbackComponent
-} from './pages/trainer-training-feedback-component/trainer-training-feedback-component.component';
+} from './pages/trainer-training-feedback-component/trainer-training-feedback-component';
+import { ChatComponent } from './pages/chat/chat.component';
 
 
 
@@ -22,7 +23,8 @@ import {
     TrainerUserComponent,
     TrainerTrainingsComponent,
     AddTrainingComponent,
-    TrainerTrainingFeedbackComponent
+    TrainerTrainingFeedbackComponent,
+    ChatComponent
   ],
   imports: [
     CommonModule,

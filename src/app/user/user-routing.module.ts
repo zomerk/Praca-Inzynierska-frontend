@@ -7,6 +7,7 @@ import {AvailableTrainersComponent} from './pages/available-trainers/available-t
 import {MyTrainingsComponent} from './pages/my-trainings/my-trainings-component';
 import {TrainingDetailsComponent} from './pages/training-details/training-details-component';
 import {AccountComponent} from './pages/account/account.component';
+import {ChatComponent} from './pages/chat/chat.component';
 
 const routes: Routes =  [{
   path: '',
@@ -27,6 +28,10 @@ const routes: Routes =  [{
     {
       path:'account',
       component: AccountComponent,
+    },
+    {
+      path:'messages',
+      component: ChatComponent,
     }
   ]
 }

@@ -18,7 +18,7 @@ export class TrainerTrainingsComponent implements OnInit {
     headerToolbar: {
       left: 'prev,next today',
       center: 'title',
-      right: 'dayGridMonth,dayGridWeek,dayGridDay'
+      right: 'dayGridMonth,dayGridWeek'
     },
     initialView: 'dayGridMonth',
     selectable: true, // Allows clicking on empty dates

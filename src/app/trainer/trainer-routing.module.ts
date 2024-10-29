@@ -4,6 +4,10 @@ import {MainTrainerComponent} from './pages/main-trainer/main-trainer.component'
 import {TrainerUserComponent} from './pages/trainer-user/trainer-user.component';
 import {TrainerTrainingsComponent} from './pages/trainer-trainings/trainer-trainings-component';
 import {AddTrainingComponent} from './pages/add-training-component/add-training-component';
+import {
+  TrainerTrainingFeedbackComponent
+} from './pages/trainer-training-feedback-component/trainer-training-feedback-component';
+import {ChatComponent} from './pages/chat/chat.component';
 
 const routes: Routes = [
   {
@@ -25,11 +29,15 @@ const routes: Routes = [
       {
         path: 'add-training/:date',
         component: AddTrainingComponent
+      },
+      {
+        path: 'training-details/:TrainingId',
+        component: TrainerTrainingFeedbackComponent
+      },
+      {
+        path: 'chat-with-client',
+        component: ChatComponent
       }
-      // {
-      //   path: 'chat-with-client',
-      //   component: JAKIS
-      // }
     ],
   },
 

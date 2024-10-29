@@ -1,0 +1,29 @@
+<div class="container mt-4">
+  <div class="card chat-container shadow-sm">
+    <div class="card-header bg-primary text-white">
+      Chat with Trainer #{{ trainerName }}
+    </div>
+    <div class="card-body chat-history" #chatHistory>
+      <div *ngFor="let message of messages"
+           [ngClass]="{
+             'message-row': true,
+             'sent-message': message.userSender,
+             'received-message': !message.userSender,
+             'd-flex justify-content-end': message.userSender,
+             'd-flex justify-content-start': !message.userSender
+           }">
+        <div [ngClass]="{
+              'message-bubble': true,
+              'user-bubble': message.userSender,
+              'trainer-bubble': !message.userSender
+            }">
+          {{ message.content }}
+        </div>
+      </div>
+    </div>
+    <div class="card-footer chat-input d-flex align-items-center">
+      <input [(ngModel)]="newMessage" class="form-control" placeholder="Type a message" />
+      <button (click)="sendMessage()" class="btn btn-primary ml-2">Send</button>
+    </div>
+  </div>
+</div>
