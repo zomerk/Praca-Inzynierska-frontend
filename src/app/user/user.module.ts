@@ -12,6 +12,7 @@ import { TrainingDetailsComponent } from './pages/training-details/training-deta
 import {FormsModule} from '@angular/forms';
 import { AccountComponent } from './pages/account/account.component';
 import { ChatComponent } from './pages/chat/chat.component';
+import { EndCollaborationComponent } from './pages/end-collaboration/end-collaboration.component';
 
 
 
@@ -24,7 +25,8 @@ import { ChatComponent } from './pages/chat/chat.component';
     TrainingDetailsComponent,
     TrainingDetailsComponent,
     AccountComponent,
-    ChatComponent
+    ChatComponent,
+    EndCollaborationComponent
   ],
   exports:[
     HeaderUserComponent

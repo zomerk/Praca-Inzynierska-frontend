@@ -12,4 +12,5 @@ export interface Trainer {
   specialization?: string;
   trainerId?: number;
   verified?: boolean;
+  ratting?: number|string;
 }
